@@ -26,7 +26,7 @@ echo '\t$(MAKE) -C $(kern_dataDIR) M=$(PWD) modules' >> ${MF}
 echo '' >> ${MF}
 echo 'install:' >> ${MF}
 echo '\t@sudo insmod kern_data.ko' >> ${MF}
-echo '\t@dmesg | tail -n 18' >> ${MF}
+echo '\t@dmesg | tail -n 20' >> ${MF}
 echo '\t@sudo rmmod kern_data' >> ${MF}
 echo '' >> ${MF}
 echo 'clean:' >> ${MF}
@@ -40,8 +40,8 @@ echo '' >> ${MF}
 # Copy SRC file
 cp ${SRC} ${PWD}/.tmp
 # Compile Kernel module
-#make -s -C ${PWD}/.tmp > /dev/null 2>&1
-make -s -C ${PWD}/.tmp 
+make -s -C ${PWD}/.tmp > /dev/null 2>&1
+#make -s -C ${PWD}/.tmp 
 # install ko
 cp ${DET} ${PWD}
 # Rmove tmpdir

@@ -183,6 +183,50 @@ endif # DEBUG_VA_KERN_DATA
 
 endif # DEBUG_VA_KERN
 
+if DEBUG_VA_KERN_LEG
+
+config DEBUG_VA_KERN_LEG_TEXT
+	bool ".text: kernel code segment"
+	help
+	  .text
+
+config DEBUG_VA_KERN_LEG_TEXT_SECTION
+	bool "establish a private .text section"
+	help
+	  .text private.
+
+config DEBUG_VA_KERN_LEG_DATA
+	bool ".data: kernel data section"
+	help
+	  .data
+
+config DEBUG_VA_KERN_LEG_DATA_SECTION
+	bool "establish a private .data section"
+	help
+	  .data private
+
+config DEBUG_VA_KERN_LEG_BSS
+	bool ".bss: kernel bss section"
+	help
+	  .bss private section.
+
+config DEBUG_VA_KERN_LEG_STACK
+	bool "stack: kernel stack"
+	help
+	  Kernel Stack.
+
+config DEBUG_VA_KERN_LEG_KMALLOC
+	bool "kmalloc virtual space"
+	help
+	  Kernel virtual space from kmalloc
+
+config DEBUG_VA_KERN_LEG_VMALLOC
+	bool "vmalloc virtual space"
+	help
+	  Kernel vmalloc virtual space.
+
+endif # DEBUG_VA_KERN_LEG
+
 endif # DEBUG_MMU_VA
 
 

@@ -122,6 +122,20 @@ SECTIONS
 	}
 	__bis_etext = .;
 #endif
+#ifdef CONFIG_DEBUG_VA_KERN_LEG_TEXT_SECTION
+	PROVIDE(__debug_text_priv = .);
+	.debugtext.priv : {
+		*(.debugtext.priv)
+	}
+	PROVIDE(__debug_etext_priv = .);
+#endif
+#ifdef CONFIG_DEBUG_VA_KERN_LEG_DATA_SECTION
+	PROVIDE(__debug_data_priv = .);
+	.debugdata.priv : {
+		*(.debugtext.data)
+	}
+	PROVIDE(__debug_edata_priv = .);
+#endif
 	__etext = .;
 	_etext  = .;
 	etext   = .;

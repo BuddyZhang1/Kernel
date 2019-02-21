@@ -440,6 +440,7 @@ asmlinkage void start_kernel(void)
 #ifdef CONFIG_SYSVIPC
     ipc_init();
 #endif
+
 #ifdef CONFIG_DEBUG_DEBUGCALL
     do_debugcall(DEBUG_DEVICE);
 #endif

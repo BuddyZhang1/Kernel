@@ -307,7 +307,7 @@ static __init int kern_space_init(void)
      */
 
     struct page *high_page  = NULL;
-    unsigned int *KMAP_init = NULL;
+    unsigned int *KMAP_int = NULL;
 
     /* Allocate a page from Highmem */
     high_page = alloc_pages(__GFP_HIGHMEM, 0);
@@ -361,10 +361,10 @@ static __init int kern_space_init(void)
 
     /* Obtain current CPU's FIX_KMAP_BEGIN */
     type = kmap_atomic_idx_push();
-    idx  = FIX_KMAP_BEGIN + type + KM_TYPE_NR * smp_processor_id();
+    idx  = type + KM_TYPE_NR * smp_processor_id();
 
     /* Obtain fixmap virtual address by index */
-    vaddr = fix_to_virt(idx);
+    vaddr = __fix_to_virt(FIX_KMAP_BEGIN + idx);
     /* Associate fixmap virtual address with physical address */
     set_fixmap(idx, page_to_phys(high_page));
 
